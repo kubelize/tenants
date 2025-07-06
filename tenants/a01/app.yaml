@@ -1,0 +1,14 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: a01
+  namespace: argocd
+spec:
+  project: default
+  sources:
+    - repoURL: https://github.com/kubelize/projects
+      path: tenants/a01
+      targetRevision: main
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: a01-reserved
